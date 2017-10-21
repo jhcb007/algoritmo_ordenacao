@@ -10,20 +10,62 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>Algoritmo de Ordenação</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css">
     <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div ng-controller="GeralController">
-    <img ng-repeat="n in  array_numeros" width="50px" ng-src="img/{{n}}.svg">
+<div class="container marketing" ng-controller="GeralController">
+    <h1 class="mt-3">Algoritmo de Ordenação</h1>
+    <form class="form-inline mb-5">
+        <button type="button" ng-click="embaralhar()" class="btn btn mr-2">Embaralhar</button>
+        <div class="form-group">
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Tempo de execução (ms)">
+        </div>
+        <div class="form-group mx-sm-3">
+            <label for="inputPassword2" class="sr-only">Em milissegundos</label>
+            <input type="number" min="400" ng-model="tempo" class="form-control text-right" id="inputPassword2"
+                   placeholder="Em milissegundos">
+        </div>
+        <button type="button" ng-click="animacao()" class="btn btn-primary">Iniciar Animação</button>
+    </form>
+
+    <div class="row" style="margin-bottom: 150px">
+        <div class="col-md-5 text-right">
+            <img width="80px" ng-src="img/{{calculo.num1}}.svg" class="rounded-circle">
+        </div>
+        <div class="col-md-2 text-center">
+            <img width="80px" ng-src="img/branco.svg" class="rounded-circle">
+        </div>
+        <div class="col-md-5 text-left">
+            <img width="80px" ng-src="img/{{calculo.num2}}.svg" class="rounded-circle">
+        </div>
+    </div>
+    <div class="ml-5 row">
+        <div ng-repeat="n in  array_numeros" class="align-items-center text-center">
+            <img class="rounded-circle text-center  mr-1" width="50px" ng-src="img/{{n}}.svg">
+        </div>
+    </div>
+    python -m http.server
     {{randomQuote}}
 </div>
 
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 <script src="../bower_components/angular/angular.js"></script>
 <script src="moduloGeral.js"></script>
 <script src="app.js"></script>
