@@ -6,7 +6,7 @@
 <!--[if IE 8]>
 <html lang="pt_BR" ng-app="AppOrdem" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="pt_BR" ng-app="AppOrdem" class="no-js"> <!--<![endif]-->
+<html lang="pt_BR" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +24,7 @@
 <div class="container marketing" ng-controller="GeralController">
     <h1 class="mt-3">Algoritmo de Ordenação</h1>
     <form class="form-inline mb-5">
-        <button type="button" ng-click="embaralhar()" class="btn btn mr-2">Embaralhar</button>
+        <button type="button" onclick="embaralhar()" class="btn btn mr-2">Embaralhar</button>
         <div class="form-group">
             <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Tempo de execução (ms)">
         </div>
@@ -33,41 +33,48 @@
             <input type="number" min="400" ng-model="tempo" class="form-control text-right" id="inputPassword2"
                    placeholder="Em milissegundos">
         </div>
-        <button type="button" ng-click="animacao()" class="btn btn-primary">Iniciar Animação</button>
+        <button type="button" onclick="animacao()" class="btn btn-primary">Iniciar Animação</button>
     </form>
 
     <div class="row" style="margin-bottom: 150px">
-        <div class="col-md-5 text-right">
-            <img width="80px" ng-src="img/{{calculo.num1}}.svg" class="rounded-circle">
+        <div id="calculo_num1" class="col-md-5 text-right">
+
         </div>
-        <div class="col-md-2 text-center">
-            <img width="80px" ng-src="img/branco.svg" class="rounded-circle">
+        <div id="calculo_maior_menor" class="col-md-2 text-center">
+
         </div>
-        <div class="col-md-5 text-left">
-            <img width="80px" ng-src="img/{{calculo.num2}}.svg" class="rounded-circle">
+        <div id="calculo_num2" class="col-md-5 text-left">
+
         </div>
     </div>
     <div class="ml-5 row">
-        <div ng-repeat="n in  array_numeros" class="align-items-center text-center">
-            <img class="rounded-circle text-center  mr-1" width="50px" ng-src="img/{{n}}.svg">
+        <div id="div_numero" class="align-items-center text-center">
+            <img width="50px" id="numero_4" style="display: none" src="img/4.svg">
+            <img width="50px" id="numero_80" style="display: none" src="img/80.svg">
+            <img width="50px" id="numero_9" style="display: none" src="img/9.svg">
+            <img width="50px" id="numero_5" style="display: none" src="img/5.svg">
+            <img width="50px" id="numero_3" style="display: none" src="img/3.svg">
+            <img width="50px" id="numero_6" style="display: none" src="img/6.svg">
+            <img width="50px" id="numero_7" style="display: none" src="img/7.svg">
+            <img width="50px" id="numero_100" style="display: none" src="img/100.svg">
+            <img width="50px" id="numero_60" style="display: none" src="img/60.svg">
+            <img width="50px" id="numero_50" style="display: none" src="img/50.svg">
+            <img width="50px" id="numero_2" style="display: none" src="img/2.svg">
+            <img width="50px" id="numero_1" style="display: none" src="img/1.svg">
+            <img width="50px" id="numero_10" style="display: none" src="img/10.svg">
+            <img width="50px" id="numero_40" style="display: none" src="img/40.svg">
+            <img width="50px" id="numero_30" style="display: none" src="img/30.svg">
+            <img width="50px" id="numero_8" style="display: none" src="img/8.svg">
+            <img width="50px" id="numero_20" style="display: none" src="img/20.svg">
+            <img width="50px" id="numero_70" style="display: none" src="img/70.svg">
+            <img width="50px" id="numero_90" style="display: none" src="img/90.svg">
         </div>
     </div>
     python -m http.server
-    {{randomQuote}}
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
-        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-        crossorigin="anonymous"></script>
-<script src="../bower_components/angular/angular.js"></script>
-<script src="moduloGeral.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
