@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--[if lt IE 7]>
-<html lang="pt_BR" ng-app="AppOrdem" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<html lang="pt_BR" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
-<html lang="pt_BR" ng-app="AppOrdem" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<html lang="pt_BR"  class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>
-<html lang="pt_BR" ng-app="AppOrdem" class="no-js lt-ie9"> <![endif]-->
+<html lang="pt_BR" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="pt_BR" class="no-js"> <!--<![endif]-->
 <head>
@@ -13,16 +13,12 @@
     <title>Algoritmo de Ordenação</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/normalize.css">
-    <link rel="stylesheet" href="../bower_components/html5-boilerplate/dist/css/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
-    <script src="../bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-<div class="container marketing" ng-controller="GeralController">
-    <h1 class="mt-3">Algoritmo de Ordenação</h1>
+<div class="container marketing">
+    <h1 class="mt-3">Algoritmo de Ordenação - Selection Sort</h1>
     <form class="form-inline mb-5">
         <button type="button" onclick="embaralhar()" class="btn btn mr-2">Embaralhar</button>
         <div class="form-group">
@@ -38,13 +34,10 @@
 
     <div class="row" style="margin-bottom: 150px">
         <div id="calculo_num1" class="col-md-5 text-right">
-
         </div>
         <div id="calculo_maior_menor" class="col-md-2 text-center">
-
         </div>
         <div id="calculo_num2" class="col-md-5 text-left">
-
         </div>
     </div>
     <div class="ml-5 row">
@@ -74,7 +67,7 @@
 </div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
