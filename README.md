@@ -4,10 +4,10 @@
 # Algoritmo de Ordenação - Selection Sort #
 
 
-Trabalho para disciplina de Estrutura de Dados II
+Trabalho de Estrutura de Dados II
 
 Download das dependências:
 
-    yarn
+    yarn ou npm install
     
 **Link do trabalho:** (http://104.198.107.247/)
