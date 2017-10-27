@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>
 <html lang="pt_BR" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>
-<html lang="pt_BR"  class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<html lang="pt_BR" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>
 <html lang="pt_BR" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
@@ -21,23 +21,22 @@
     <h1 class="mt-3">Algoritmo de Ordenação - Selection Sort</h1>
     <form class="form-inline mb-5">
         <button type="button" onclick="embaralhar()" class="btn btn mr-2">Embaralhar</button>
-        <div class="form-group">
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Tempo de execução (ms)">
-        </div>
         <div class="form-group mx-sm-3">
-            <label for="inputPassword2" class="sr-only">Em milissegundos</label>
-            <input type="number" min="400" ng-model="tempo" class="form-control text-right" id="inputPassword2"
+            <label for="txtTempo" class="sr-only">Em milissegundos</label>
+            <input type="number"  value="1500" class="form-control text-right" id="txtTempo"
                    placeholder="Em milissegundos">
         </div>
         <button type="button" onclick="animacao()" class="btn btn-primary">Iniciar Animação</button>
     </form>
 
-    <div class="row" style="margin-bottom: 150px">
-        <div id="calculo_num1" class="col-md-5 text-right">
+    <div class="row" style="margin-bottom: 100px">
+        <div id="calculo_num_menor" class="col-md-5 text-right">
+            <img width="80px" src="img/branco.svg">
         </div>
         <div id="calculo_maior_menor" class="col-md-2 text-center">
         </div>
-        <div id="calculo_num2" class="col-md-5 text-left">
+        <div id="calculo_num_maior" class="col-md-5 text-left">
+            <img width="80px" src="img/branco.svg">
         </div>
     </div>
     <div class="ml-5 row">
@@ -63,7 +62,13 @@
             <img width="50px" id="numero_90" style="display: none" src="img/90.svg">
         </div>
     </div>
-    python -m http.server
+    <hr>
+    <div class="ml-5 row">
+        <div>
+            <div id="div_numero_ordenado" class="align-items-center text-center">
+            </div>
+        </div>
+    </div>
 </div>
 
 

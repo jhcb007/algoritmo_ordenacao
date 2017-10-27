@@ -2,20 +2,15 @@
 // Declare app level module which depends on views, and components
 
 var array_numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+var array_numeros_final = [];
+var array_ordenado = [];
 var tempo = 1500;
 var _calculo = {
-    menor: null,
-    maior: null
+    i_menor: 0,
+    i_maior: 1,
+    count: 0,
+    _passadas: 0
 };
-
-function espera(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds) {
-            break;
-        }
-    }
-}
 
 function popular_numeros() {
     $('#div_numero').html('');
@@ -24,7 +19,14 @@ function popular_numeros() {
     });
 }
 
-function exibir_numeros(pausa) {
+function popular_numeros_ordenado() {
+    $('#div_numero_ordenado').html('');
+    $.each(array_ordenado, function (key, value) {
+        $("#div_numero_ordenado").append('<img width="50px" src="img/' + value + '.svg">');
+    });
+}
+
+function exibir_numeros() {
     $.each(array_numeros, function (key, value) {
         $("#numero_" + value).fadeIn("slow");
     });
@@ -32,86 +34,101 @@ function exibir_numeros(pausa) {
 
 function embaralhar() {
     for (var j, x, i = array_numeros.length; i; j = Math.floor(Math.random() * i), x = array_numeros[--i], array_numeros[i] = array_numeros[j], array_numeros[j] = x) ;
+    array_numeros_final = array_numeros.slice(0);
     popular_numeros();
     exibir_numeros(false);
 }
 
+function finaliza() {
+    $("#calculo_num_menor").html('<img width="80px" src="img/branco.svg">');
+    $("#calculo_maior_menor").html('');
+    $("#calculo_num_maior").html('<img width="80px" src="img/branco.svg">');
+    array_numeros_final = [];
+    array_ordenado = [];
+    _calculo.i_menor = 0;
+    _calculo.i_maior = 0;
+    _calculo._passadas = 0;
+    _calculo.count = 0;
+}
 
-var executa_animacao = function (temp_i) {
+var executa_animacao = function () {
 
-    for (var i = 0; i < array_numeros.length; ++i) {
+    $("#calculo_maior_menor").html('');
 
-        if (i === temp_i) {
-            $("#numero_" + array_numeros[i]).fadeOut(400);
-            $("#numero_" + array_numeros[i + 1]).fadeOut(400);
+    $("#calculo_num_menor").html('<img width="80px"  id="cal_img_menor' + array_numeros[_calculo.i_menor] + '" class="rounded-circle" style="display: none" src="img/' + array_numeros[_calculo.i_menor] + '.svg">');
 
-            $("#calculo_num1").html('');
-            $("#calculo_maior_menor").html('');
-            $("#calculo_num2").html('');
-            $("#calculo_num1").append('<img width="80px"  id="cal1_img_' + array_numeros[i] + '" class="rounded-circle" style="display: none" src="img/' + array_numeros[i] + '.svg">');
-            if (array_numeros[i] > array_numeros[i + 1]) {
-                $("#calculo_maior_menor").append('<img width="80px" id="menor_maior_img" class="rounded-circle" style="display: none" src="img/right.svg">');
-            } else {
-                $("#calculo_maior_menor").append('<img width="80px" id="menor_maior_img" class="rounded-circle" style="display: none" src="img/left.svg">');
-            }
-            $("#calculo_num2").append('<img width="80px" id="cal2_img_' + array_numeros[i + 1] + '" class="rounded-circle"  style="display: none" src="img/' + array_numeros[i + 1] + '.svg">');
-
-            $("#cal1_img_" + array_numeros[i]).fadeIn(200);
-            $("#menor_maior_img").fadeIn(2000);
-            $("#cal2_img_" + array_numeros[i + 1]).fadeIn(200);
-        }
-
-
-        //embaralhar();
-        //setTimeout(executa_animacao(temp_i + 1), tempo);
+    if (array_numeros[_calculo.i_maior] > array_numeros[_calculo.i_menor]) {
+        $("#calculo_maior_menor").html('<img width="80px" id="menor_maior_img" class="rounded-circle" style="display: none" src="img/left.svg">');
+    } else {
+        $("#calculo_maior_menor").html('<img width="80px" id="menor_maior_img" class="rounded-circle" style="display: none" src="img/right.svg">');
     }
 
+    $("#calculo_num_maior").html('<img width="80px" id="cal_img_maior' + array_numeros[_calculo.i_maior] + '" class="rounded-circle"  style="display: none" src="img/' + array_numeros[_calculo.i_maior] + '.svg">');
 
+    $("#cal_img_menor" + array_numeros[_calculo.i_menor]).fadeIn(100);
+    $("#menor_maior_img").fadeIn(1000);
+    $("#cal_img_maior" + array_numeros[_calculo.i_maior]).fadeIn(100);
+
+    if (array_numeros[_calculo.i_maior] > array_numeros[_calculo.i_menor]) {
+        _calculo.i_maior = _calculo.i_maior + 1;
+    } else {
+        _calculo.i_menor = _calculo.i_maior;
+        _calculo.i_maior = _calculo.i_menor + 1;
+    }
+
+    _calculo.count = _calculo.count + 1;
+
+    if (_calculo.count > (array_numeros.length - 2) && array_numeros.length > 1) {
+
+        array_ordenado.push(array_numeros[_calculo.i_menor]);
+        array_numeros.splice(_calculo.i_menor, 1);
+
+        _calculo.count = 0;
+        _calculo.i_menor = 0;
+        _calculo.i_maior = 1;
+
+        popular_numeros();
+        exibir_numeros();
+        popular_numeros_ordenado();
+
+        _calculo._passadas = _calculo._passadas + 1;
+
+    }
+
+    if (_calculo.count > (array_numeros.length - 2) && array_numeros.length === 1) {
+        array_ordenado.push(array_numeros[0]);
+        array_numeros.splice(0, 1);
+        popular_numeros_ordenado();
+        array_numeros = array_numeros_final;
+        popular_numeros();
+        exibir_numeros();
+        finaliza();
+        return;
+    }
+
+    if (_calculo._passadas > 17) {
+        return;
+    }
+
+    setTimeout(executa_animacao, tempo);
 };
 
 
-function selectionSort(items) {
-    var length = items.length;
-    for (var i = 0; i < length - 1; i++) {
-        var min = i;
-        for (var j = i + 1; j < length; j++) {
-            if (items[j] < items[min]) {
-                min = j;
-
-            }
-        }
-        if (min !== i) {
-            var tmp = items[i];
-            items[i] = items[min];
-            items[min] = tmp;
-        }
-    }
-}
-
-function calc_teste() {
-    console.log(array_numeros);
-    selectionSort(array_numeros);
-    console.log(array_numeros);
-}
-
-
 function animacao() {
-    executa_animacao(0);
-    //calc_teste();
+
+    tempo = parseInt($("#txtTempo").val());
+    if (!tempo) {
+        tempo = 1500;
+    }
+    $("#div_numero_ordenado").html('');
+    executa_animacao();
 }
 
 
 function init() {
     embaralhar();
     popular_numeros();
-    exibir_numeros(false);
-
+    exibir_numeros();
 }
-
-var recursiva = function () {
-    //console.log("Se passaram 1 segundo!");
-    //setTimeout(recursiva,1000);
-}
-recursiva();
 
 init();
