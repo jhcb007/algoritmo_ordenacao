@@ -1,10 +1,9 @@
 'use strict';
-// Declare app level module which depends on views, and components
 
 var array_numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 var array_numeros_final = [];
 var array_ordenado = [];
-var tempo = 1500;
+var tempo = 1000;
 var _calculo = {
     i_menor: 0,
     i_maior: 1,
@@ -36,7 +35,7 @@ function embaralhar() {
     for (var j, x, i = array_numeros.length; i; j = Math.floor(Math.random() * i), x = array_numeros[--i], array_numeros[i] = array_numeros[j], array_numeros[j] = x) ;
     array_numeros_final = array_numeros.slice(0);
     popular_numeros();
-    exibir_numeros(false);
+    exibir_numeros();
 }
 
 function finaliza() {
@@ -118,7 +117,7 @@ function animacao() {
 
     tempo = parseInt($("#txtTempo").val());
     if (!tempo) {
-        tempo = 1500;
+        tempo = 1000;
     }
     $("#div_numero_ordenado").html('');
     executa_animacao();
