@@ -23,10 +23,13 @@
         <button type="button" onclick="embaralhar()" class="btn btn mr-2">Embaralhar</button>
         <div class="form-group mx-sm-3">
             <label for="txtTempo" class="sr-only">Em milissegundos</label>
-            <input type="number"  value="1000" class="form-control text-right" id="txtTempo"
+            <input type="number" value="500" class="form-control text-right" id="txtTempo"
                    placeholder="Em milissegundos">
         </div>
         <button type="button" onclick="animacao()" class="btn btn-primary">Iniciar Animação</button>
+        <button id="btnNovaAnimacao" type="button" onclick="animacao()" style="display: none" class="ml-4 btn btn-info">
+            Nova Animação
+        </button>
     </form>
 
     <div class="row" style="margin-bottom: 100px">
@@ -40,6 +43,8 @@
         </div>
     </div>
     <div class="ml-5 row">
+        <div id="div_numero_ordenado" class="align-items-center text-center">
+        </div>
         <div id="div_numero" class="align-items-center text-center">
             <img width="50px" id="numero_4" style="display: none" src="img/4.svg">
             <img width="50px" id="numero_80" style="display: none" src="img/80.svg">
@@ -60,13 +65,6 @@
             <img width="50px" id="numero_20" style="display: none" src="img/20.svg">
             <img width="50px" id="numero_70" style="display: none" src="img/70.svg">
             <img width="50px" id="numero_90" style="display: none" src="img/90.svg">
-        </div>
-    </div>
-    <hr>
-    <div class="ml-5 row">
-        <div>
-            <div id="div_numero_ordenado" class="align-items-center text-center">
-            </div>
         </div>
     </div>
 </div>
