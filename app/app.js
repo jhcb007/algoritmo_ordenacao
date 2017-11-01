@@ -50,11 +50,10 @@ function finaliza() {
     $("#calculo_num_menor").html('<img width="80px" src="img/branco.svg">');
     $("#calculo_maior_menor").html('');
     $("#calculo_num_maior").html('<img width="80px" src="img/branco.svg">');
+    $("#btnNovaAnimacao").fadeIn(100);
     _calculo.i_menor = 0;
     _calculo.i_maior = 0;
-    _calculo._passadas = 0;
     _calculo.count = 0;
-    _calculo.primeiro = 0;
 }
 
 var executa_animacao = function () {
@@ -112,6 +111,12 @@ var executa_animacao = function () {
 
 };
 
+function nova_animacao() {
+    $("#btnNovaAnimacao").fadeOut(100);
+    init_array();
+    embaralhar();
+    animacao();
+}
 
 function animacao() {
 
